@@ -2,11 +2,9 @@ from flask import Flask, request, jsonify
 import pickle
 import numpy as np
 
-# model = pickle.load(open('most_imp_eight_attributes_fuel_model.sav', 'rb'))
 model = pickle.load(open('ml_model_23_june.sav', 'rb'))
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def home():
@@ -15,6 +13,15 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    #   a1 = EmptyWeight
+    #   a2 = GrossWeight
+    #   a3 = Length
+    #   a4 = Height
+    #   a5 = WingSpan
+    #   a6 = Range
+    #   a7 = GroundRun
+    #   a8 = ServiceCeiling
+
     a1 = request.form.get('a1')
     a2 = request.form.get('a2')
     a3 = request.form.get('a3')
